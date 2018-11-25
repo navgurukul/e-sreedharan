@@ -132,6 +132,16 @@
    {  
       "answer": 1,
       "options":[  
+         "kbc",
+         "Shakuntala devi",
+         "saral",
+         "galelio"
+      ],
+      "question":"which repo are you coding in "
+   },
+   {  
+      "answer": 1,
+      "options":[  
          "Typhoid",
          "Dengue",
          "Chikungunya",

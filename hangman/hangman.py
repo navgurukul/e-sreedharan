@@ -16,6 +16,7 @@ def isWordGuessed(secretWord, lettersGuessed):
     return False
 
 
+# Iss function ko test karne ke liye aap getGuessedWord("kindness", [k, n, d]) call kar sakte hai
 def getGuessedWord(secretWord, lettersGuessed):
     '''
     secretWord: ek string word jo ki user ko guess kar raha hai
@@ -83,7 +84,7 @@ def hangman(secretWord):
     guess = raw_input("Please guess a letter: ")
     letter = guess.lower()
 
-    elif letter in secretWord:
+    if letter in secretWord:
         lettersGuessed.append(letter)
         print "Good guess: " + getGuessedWord(secretWord, lettersGuessed)
         print ""

@@ -99,9 +99,6 @@ def hangman(secret_word):
         letters_guessed.append(letter)
         print ""
     
-    # if is_word_guessed(secret_word, letters_guessed) == False:
-    #     print "Sorry, you ran out of guesses. The word was " + str(secret_word) + "."
-
 # Load the list of words into the variable wordlist
 # So that it can be accessed from anywhere in the program
 secret_word = choose_word()

@@ -2,24 +2,24 @@ import string
 import random
 WORDLIST_FILENAME = "words.txt"
 
-def loadWords():
+def load_words():
     """
     Ye function kaafi jayada words ko load karne mai help karega
     """
     print "Loading word list from file..."
     inFile = open(WORDLIST_FILENAME, 'r', 0)
     line = inFile.readline()
-    wordlist = string.split(line)
-    print "  ", len(wordlist), "words loaded.\n"
-    return wordlist
+    word_list = string.split(line)
+    print "  ", len(word_list), "words loaded.\n"
+    return word_list
 
-def chooseWord():
+def choose_word():
     """
-    wordlist (list): list of words (strings)
+    word_list (list): list of words (strings)
     ye function ek word randomly return karega
     """
-    wordlist = loadWords()
-    secretWord = random.choice(wordlist)
-    secretWord = secretWord.lower()
+    word_list = load_words()
+    secret_word = random.choice(word_list)
+    secret_word = secret_word.lower()
 
-    return secretWord
+    return secret_word

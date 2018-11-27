@@ -1,27 +1,7 @@
-import random
 import string
+from words import chooseWord
 
-WORDLIST_FILENAME = "words.txt"
-
-def loadWords():
-    """
-    Ye function kafi jayada words ko load karne mai help karega
-    """
-    print "Loading word list from file..."
-    inFile = open(WORDLIST_FILENAME, 'r', 0)
-    line = inFile.readline()
-    wordlist = string.split(line)
-    print "  ", len(wordlist), "words loaded."
-    return wordlist
-
-def chooseWord(wordlist):
-    """
-    wordlist (list): list of words (strings)
-    ye function ek word randomly return karega
-    """
-    return random.choice(wordlist)
-
-# end of helper code
+# End of helper code
 # -----------------------------------
 
 def isWordGuessed(secretWord, lettersGuessed):
@@ -44,11 +24,16 @@ def getGuessedWord(secretWord, lettersGuessed):
     eg agar secretWord = "kindness", lettersGuessed = [k,n, s]
     to hum return karenge "k_n_n_ss"
     '''
-    # FILL IN YOUR CODE HERE...
-
-    # FILL IN YOUR CODE HERE...
-    # remove this return
-    return '________'
+    i = 0
+    new_word = ""
+    while (i < len(secretWord)):
+        if secretWord[i] in lettersGuessed:
+            new_word += secretWord[i]
+        else:
+            new_word += "_"
+        i += 1
+    
+    return new_word
 
 
 def getAvailableLetters(lettersGuessed):
@@ -71,61 +56,51 @@ def hangman(secretWord):
     '''
     secretWord: string, the secret word to guess.
 
-    Starts up an interactive game of Hangman.
+    Hangman game yeh start karta hai:
 
-    * At the start of the game, let the user know how many
-      letters the secretWord contains.
+    * Game ki shuruaat mei hi, user ko bata dete hai ki
+      secretWord mei kitne letters hai
 
-    * Ask the user to supply one guess (i.e. letter) per round.
+    * Har round mei user se ek letter guess karne ko bolte hai
 
-    * The user should receive feedback immediately after each guess
-      about whether their guess appears in the computer's word.
+    * Har guess ke baad user ko feedback do ki woh guess uss
+      word mei hai ya nahi
 
-    * After each round, you should also display to the user the
-      partially guessed word so far, as well as letters that the
-      user has not yet guessed.
+    * Har round ke baar, user ko uska guess kiya hua partial word
+      display karo, aur underscore use kar kar woh letters bhi dikhao
+      jo user ne abhi tak guess nahi kiye hai
 
-    Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE...
-
     print "Welcome to the game, Hangman!"
     print "I am thinking of a word that is " + str(len(secretWord)) + " letters long."
-    print "-----------"
+    print ""
 
     lettersGuessed = []
+    
     availableLetters = getAvailableLetters(lettersGuessed)
-    guessesLeft = 8
-    while guessesLeft > 0:
-        print "You have " + str(guessesLeft) + " guesses left."
-        print "Available letters: " + availableLetters
-        guess = raw_input("Please guess a letter: ")
-        letter = guess.lower()
-        if letter in lettersGuessed:
-            print "Oops! You've already guessed that letter: " + getGuessedWord(secretWord, lettersGuessed)
-            print "-----------"
-        elif letter in secretWord:
-            lettersGuessed.append(letter)
-            print "Good guess: " + getGuessedWord(secretWord, lettersGuessed)
-            availableLetters = getAvailableLetters(lettersGuessed)
-            print "-----------"
-            if isWordGuessed(secretWord, lettersGuessed) == True:
-             print "Congratulations, you won!"
-             break
-        else:
-            print "Oops! That letter is not in my word: " + getGuessedWord(secretWord, lettersGuessed)
-            guessesLeft = guessesLeft - 1
-            lettersGuessed.append(letter)
-            availableLetters = getAvailableLetters(lettersGuessed)
-            print "-----------"
-    if isWordGuessed(secretWord, lettersGuessed) == False:
-        print "Sorry, you ran out of guesses. The word was " + str(secretWord) + "."
+    print "Available letters: " + availableLetters
 
+    guess = raw_input("Please guess a letter: ")
+    letter = guess.lower()
 
+    elif letter in secretWord:
+        lettersGuessed.append(letter)
+        print "Good guess: " + getGuessedWord(secretWord, lettersGuessed)
+        print ""
 
+        if isWordGuessed(secretWord, lettersGuessed) == True:
+            print " * * Congratulations, you won! * * "
+            print ""
+
+    else:
+        print "Oops! That letter is not in my word: " + getGuessedWord(secretWord, lettersGuessed)
+        lettersGuessed.append(letter)
+        print ""
+    
+    # if isWordGuessed(secretWord, lettersGuessed) == False:
+    #     print "Sorry, you ran out of guesses. The word was " + str(secretWord) + "."
 
 # Load the list of words into the variable wordlist
-# so that it can be accessed from anywhere in the program
-wordlist = loadWords()
-secretWord = chooseWord(wordlist).lower()
+# So that it can be accessed from anywhere in the program
+secretWord = chooseWord()
 hangman(secretWord)

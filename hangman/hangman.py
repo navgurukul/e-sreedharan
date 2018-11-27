@@ -45,14 +45,12 @@ def get_available_letters(letters_guessed):
     eg agar letters_guessed = ['e', 'a'] hai to humme baki charecters return karne hai
     jo ki `bcdfghijklmnopqrstuvwxyz' ye hoga
     '''
-    # FILL IN YOUR CODE HERE...
-
     import string
-    lettersLeft = string.ascii_lowercase
+    letters_left = string.ascii_lowercase
 
-    # FILL IN YOUR CODE HERE...
-    # remove this return
-    return lettersLeft
+    # Apna code aap ab yaha par likhein
+
+    return letters_left
 
 def hangman(secret_word):
     '''

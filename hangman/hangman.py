@@ -15,7 +15,6 @@ def isWordGuessed(secretWord, lettersGuessed):
     # remove this return
     return False
 
-
 # Iss function ko test karne ke liye aap getGuessedWord("kindness", [k, n, d]) call kar sakte hai
 def getGuessedWord(secretWord, lettersGuessed):
     '''
@@ -25,16 +24,17 @@ def getGuessedWord(secretWord, lettersGuessed):
     eg agar secretWord = "kindness", lettersGuessed = [k,n, s]
     to hum return karenge "k_n_n_ss"
     '''
-    i = 0
-    new_word = ""
-    while (i < len(secretWord)):
-        if secretWord[i] in lettersGuessed:
-            new_word += secretWord[i]
-        else:
-            new_word += "_"
-        i += 1
     
-    return new_word
+    index = 0
+    guessed_word = ""
+    while (index < len(secretWord)):
+        if secretWord[index] in lettersGuessed:
+            guessed_word += secretWord[index]
+        else:
+            guessed_word += "_"
+        index += 1
+    
+    return guessed_word
 
 
 def getAvailableLetters(lettersGuessed):

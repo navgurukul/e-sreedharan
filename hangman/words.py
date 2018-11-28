@@ -1,16 +1,11 @@
 import string
 import random
-WORDLIST_FILENAME = "words.txt"
 
 def load_words():
     """
     Ye function kaafi jayada words ko load karne mai help karega
     """
-    print "Loading word list from file..."
-    inFile = open(WORDLIST_FILENAME, 'r', 0)
-    line = inFile.readline()
-    word_list = string.split(line)
-    print "  ", len(word_list), "words loaded.\n"
+    word_list = ["navgurukul", "learning", "kindness"]
     return word_list
 
 def choose_word():

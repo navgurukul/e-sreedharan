@@ -12,8 +12,7 @@ def is_word_guessed(secret_word, letters_guessed):
     returns: return True kare agar saare letters jo ki user ne guess kiye hai wo secret_word mai hai, warna no
       False otherwise
     '''
-    # FILL IN YOUR CODE HERE...
-    # remove this return
+
     return False
 
 # Iss function ko test karne ke liye aap get_guessed_word("kindness", [k, n, d]) call kar sakte hai
@@ -47,8 +46,6 @@ def get_available_letters(letters_guessed):
     '''
     import string
     letters_left = string.ascii_lowercase
-
-    # Apna code aap ab yaha par likhein
 
     return letters_left
 
